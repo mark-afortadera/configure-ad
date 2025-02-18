@@ -6,10 +6,6 @@
 This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
 
 
-<h2>Video Demonstration</h2>
-
-- ### [YouTube: How to Deploy on-premises Active Directory within Azure Compute](https://www.youtube.com)
-
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
@@ -176,8 +172,54 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <p>Create a new OU named “_CLIENTS” and drag Client-1 into there (same steps as how "_EMPLOYEES" and "_ADMINS" group were created.</p>
 <br />
 
+![Screenshot 2025-02-18 180520](https://github.com/user-attachments/assets/a6734aea-0ffa-4b7b-af5e-9b37e34a413a)
+![Screenshot 2025-02-18 180659](https://github.com/user-attachments/assets/9253762b-a2d7-4d51-96c8-1a54050a37b8)
 
-<p></p>
+<p>Log into Client-1 as mydomain.com\jane_admin</p>
+<p>Open system properties</p>
+<br />
+
+![Screenshot 2025-02-18 180840](https://github.com/user-attachments/assets/b7e06eab-353f-4d5d-84a3-19ef13bb9fe0)
+
+<p>Click “Remote Desktop”</p>
+<p>Allow “domain users” access to remote desktop</p>
+<br />
+
+![Screenshot 2025-02-18 181940](https://github.com/user-attachments/assets/b04dbeaa-ad29-4ce7-a6c8-93489f0a838e)
+
+
+<p>Login to DC-1 as jane_admin</p>
+<p>Open PowerShell_ise as an administrator</p>
+<br />
+
+![Screenshot 2025-02-18 182708](https://github.com/user-attachments/assets/7882f3f7-b519-4f4e-9d88-a0b4ef30ac10)
+
+<p>Create a new File and paste the contents of the <a href=https://github.com/mark-afortadera/AD_PS/blob/master/Generate-Names-Create-Users.ps1>script</a> into it</p>
+<br />
+
+![Screenshot 2025-02-18 185259](https://github.com/user-attachments/assets/b2dfaff3-15e5-4851-bbd8-96a20a8a1c4e)
+
+<p>Run the script and observe the accounts being created</p>
+<br />
+
+![Screenshot 2025-02-18 185337](https://github.com/user-attachments/assets/52e31039-cb44-4602-8ceb-82bdfa8185c7)
+
+<p>When finished, open ADUC and observe the accounts in the appropriate OU　
+(_EMPLOYEES)</p>
+<br />
+
+![Screenshot 2025-02-18 185524](https://github.com/user-attachments/assets/62741149-4338-4740-969f-57a330a1b1e1)
+
+<p>attempt to log into Client-1 with one of the accounts (take note of the password in
+ the script)</p>
+<br />
+
+![Screenshot 2025-02-18 185706](https://github.com/user-attachments/assets/63a2fe9b-2540-452c-b02f-36238f34ed23)
+![Screenshot 2025-02-18 185804](https://github.com/user-attachments/assets/b60b7f13-7932-4f4f-a7f8-e1fca11df189)
+![Screenshot 2025-02-18 185804](https://github.com/user-attachments/assets/309597c9-a2b8-4189-806d-d3dc0c931b14)
+![Screenshot 2025-02-18 190022](https://github.com/user-attachments/assets/253c6455-a0c9-412d-b340-e693634121ed)
+
+<p>Client-1 is now able to log in as "menu.suq" or non-administrative user now</p>
 <br />
 
 
@@ -185,24 +227,6 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <p></p>
 <br />
 
-
-<p></p>
-<br />
-
-
-
-<p></p>
-<br />
-
-
-
-<p></p>
-<br />
-
-
-
-<p></p>
-<br />
 
 
 
