@@ -26,8 +26,9 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 - Setup Domain Controller in Azure
 - Setup Client-1 in Azure
-- Step 3
-- Step 4
+- Install Active Directory
+- Create a Domain Admin user within the domain
+- Join Client-1 to your domain (mydomain.com)
 
 <h2>Deployment and Configuration Steps</h2>
 
@@ -97,4 +98,90 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <p>From Client-1, open PowerShell and run ipconfig /all</p>
 <p>- The output for the DNS settings should show DC-1’s private IP Address</p>
+<br />
+
+![Screenshot 2025-02-18 162949](https://github.com/user-attachments/assets/2a787513-bbc0-4258-95c8-6b531a286657)
+![Screenshot 2025-02-18 162957](https://github.com/user-attachments/assets/b2d7ce81-6c30-463e-8ea2-c79ed3489adb)
+![Screenshot 2025-02-18 163103](https://github.com/user-attachments/assets/f012d2ba-d9bd-4a0f-a51a-f0e162ebfeda)
+![Screenshot 2025-02-18 163120](https://github.com/user-attachments/assets/6c1b3dad-bfe8-4c30-974d-08722fc23fb1)
+![Screenshot 2025-02-18 163146](https://github.com/user-attachments/assets/5077cd9e-5547-4f78-a21a-07c284d3fbc9)
+
+<p>Login to DC-1 and install Active Directory Domain Services</p>
+<br />
+
+![Screenshot 2025-02-18 163508](https://github.com/user-attachments/assets/ef031d32-088e-4080-b12f-b12c44c752dd)
+![Screenshot 2025-02-18 163655](https://github.com/user-attachments/assets/3da5ba08-b8d1-4f57-be5e-67281a5e6c66)
+![Screenshot 2025-02-18 163849](https://github.com/user-attachments/assets/c66d35f8-4c42-4eff-b784-6f31e94a2a45)
+
+<p>Promote as a DC: Setup a new forest as mydomain.com</p>
+<br />
+
+![Screenshot 2025-02-18 164051](https://github.com/user-attachments/assets/16c015ec-c3f7-43bf-a977-282c0803835e)
+![Screenshot 2025-02-18 164335](https://github.com/user-attachments/assets/bdb65d54-7b2b-4e4c-b567-83d4f0db50b9)
+![Screenshot 2025-02-18 164454](https://github.com/user-attachments/assets/4e9735bd-7525-4700-b3ab-6ad48390c5a6)
+
+<p>Restart and then log back into DC-1 as user: mydomain.com\labuser</p>
+<br />
+
+![Screenshot 2025-02-18 164835](https://github.com/user-attachments/assets/e520ec0a-14bd-40eb-b704-f3e18430e180)
+![Screenshot 2025-02-18 165019](https://github.com/user-attachments/assets/81f2f444-5adc-4b76-b64c-d9a594e7dc5b)
+![Screenshot 2025-02-18 165057](https://github.com/user-attachments/assets/0edea339-a3a6-4a6a-985f-fd7fca061e4e)
+
+<p>In Active Directory Users and Computers (ADUC), create an Organizational Unit
+ (OU) called “_EMPLOYEES”</p>
+<br />
+
+
+![Screenshot 2025-02-18 165121](https://github.com/user-attachments/assets/b80956a7-d5bd-4d08-b253-5787331f4d0f)
+![Screenshot 2025-02-18 165223](https://github.com/user-attachments/assets/c61ff929-3eed-4181-ad0e-5571bc693014)
+
+<p>Create a new OU named “_ADMINS”</p>
+<br />
+
+![Screenshot 2025-02-18 165306](https://github.com/user-attachments/assets/d8986bbb-33b7-4909-8a6c-ef078cb59af5)
+![Screenshot 2025-02-18 165523](https://github.com/user-attachments/assets/8495e83e-cda9-42c4-9b4f-71ea7b0f95af)
+![Screenshot 2025-02-18 165644](https://github.com/user-attachments/assets/07a587bf-9088-4772-888d-cbd233c6b5f3)
+
+<p> Create a new employee named “Jane Doe” with the username
+ of “jane_admin”</p>
+<br />
+
+![Screenshot 2025-02-18 165749](https://github.com/user-attachments/assets/d4acfe81-18a5-4ddb-ac6c-218c80ad7adf)
+
+<p>Add jane_admin to the “Domain Admins” Security Group</p>
+<br />
+
+![Screenshot 2025-02-18 165926](https://github.com/user-attachments/assets/9efce4ba-24ed-46c2-9d7c-457da4e41b49)
+
+<p>Log out / close the connection to DC-1 and log back in as
+ “mydomain.com\jane_admin”</p>
+<p>User jane_admin as your admin account from now on</p>
+<br />
+
+![Screenshot 2025-02-18 170529](https://github.com/user-attachments/assets/6d863162-30e4-4c4e-832e-4943bb7c3095)
+![Screenshot 2025-02-18 170644](https://github.com/user-attachments/assets/33fd511e-123f-4a5f-9868-3cc472c69074)
+
+<p>Login to Client-1 as the original local admin (labuser) and join it to the domain
+ (computer will restart)</p>
+<p>Login to the Domain Controller and verify Client-1 shows up in ADUC</p>
+<br />
+
+![Screenshot 2025-02-18 171125](https://github.com/user-attachments/assets/639b8615-1a47-4443-8802-b31e6279c0e1)
+![Screenshot 2025-02-18 171235](https://github.com/user-attachments/assets/b9fc8da2-f659-43fc-bc6a-045f13ba70da)
+
+
+<p>Create a new OU named “_CLIENTS” and drag Client-1 into there (same steps as how "_EMPLOYEES" and "_ADMINS" group were created.</p>
+<br />
+
+
+<p></p>
+<br />
+
+
+
+<p></p>
+<br />
+
+
+<p></p>
 <br />
