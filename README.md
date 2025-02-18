@@ -20,7 +20,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <h2>Operating Systems Used </h2>
 
 - Windows Server 2022
-- Windows 10 (21H2)
+- Windows 10 Pro (21H2)
 
 <h2>High-Level Deployment and Configuration Steps</h2>
 
@@ -29,6 +29,9 @@ This tutorial outlines the implementation of on-premises Active Directory within
 - Install Active Directory
 - Create a Domain Admin user within the domain
 - Join Client-1 to your domain (mydomain.com)
+- Setup Remote Desktop for non-administrative users on Client-1
+- Create a bunch of additional users and attempt to log into client-1 with one
+ of the users
 
 <h2>Deployment and Configuration Steps</h2>
 
@@ -181,6 +184,31 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <p></p>
 <br />
+
+
+<p></p>
+<br />
+
+
+
+<p></p>
+<br />
+
+
+
+<p></p>
+<br />
+
+
+
+<p></p>
+<br />
+
+
+
+<p></p>
+<br />
+
 
 
 <p></p>
