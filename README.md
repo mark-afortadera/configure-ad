@@ -20,18 +20,17 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 
 <h2>High-Level Deployment and Configuration Steps</h2>
 
-- Setup Domain Controller in Azure
-- Setup Client-1 in Azure
-- Install Active Directory
+- Setting up Domain Controller in Azure
+- Setting up Client-1 in Azure
+- Installing Active Directory on DC-1
 - Create a Domain Admin user within the domain
 - Join Client-1 to your domain (mydomain.com)
-- Setup Remote Desktop for non-administrative users on Client-1
-- Create a bunch of additional users and attempt to log into client-1 with one
-  of the users
-- Configuring an account lockout policy in Active Directory using Group Policy
+- Setting up Remote Desktop for Non-Administrative users on Client-1
+- Create Multiple Users via PowerShell on DC-1
+- Configuring an Account lockout policy in Active Directory using Group Policy
 - Unlocking and Password Rest Accounts
-- Enabling and Disabling Accounts
--  Observing Logs
+- Disabling and Re-enabling Accounts
+- Observe Logs on Client Machine
 
 <h2>Deployment and Configuration Steps</h2>
 
