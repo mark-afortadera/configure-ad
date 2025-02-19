@@ -214,6 +214,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 ![Screenshot 2025-02-18 180659](https://github.com/user-attachments/assets/9253762b-a2d7-4d51-96c8-1a54050a37b8)
 
 <p><b>Open system properties</b></p>
+<br />
 <p>- Go to "settings" then "Remote Desktop"</p>
 <br />
 
