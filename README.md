@@ -363,63 +363,90 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 </p>
 <br />
 
-<h3>Unlocking and Password Reset Accounts</h3>
+<h2>Unlocking and Password Reset Accounts</h2>
 <br />
 
+<h3>1. Log into Client-1 as "mydomain.com\menu.suq" or any of the created users and Trigger Account Lockout</h3>
+<br />
 
 ![Screenshot 2025-02-19 163756](https://github.com/user-attachments/assets/291aa6d2-58af-459d-8b4f-bc3da0cd05cd)
 
-<p>Attempt to log in with it 6 times with a bad password</p>
-<p>Observe that the account has been locked out within Active Directory</p>
+<p>- Open Remote Desktop or Windows login and try to log in with the selected account.</p>
+<p>- Attempt to log in with it 6 times with a bad password</p>
+<p>- Observe that the account has been locked out within Active Directory</p>
 <br />
 
+<h3>2. Unlock the Account</h3>
+<br />
 
 ![Screenshot 2025-02-19 164050](https://github.com/user-attachments/assets/3051a90c-d875-4f22-9874-9fe65a0e5f11)
 
-<p>Unlock the account</p>
+<p>- In ADUC, right-click on the locked user account.</p>
+<p>- Select Properties.</p>
+<p>- Under the Account tab, uncheck Account is locked out and click OK.</p>
+<br />
+
+<h3>3. <p>Reset the password</h3>
 <br />
 
 ![Screenshot 2025-02-19 164215](https://github.com/user-attachments/assets/ea5edfd5-b916-4ffd-8b06-506b99e4f31f)
 
-<p>Reset the password</p>
+<p>- Still in ADUC, right-click on the user account and select Reset Password.</p>
+<p>- Set a new password (or reset it to the original password).</p>
+<p>- Click OK.</p>
+<br />
+
+<h3>4. Attempt to Log In Again:</h3>
 <br />
 
 ![Screenshot 2025-02-19 164400](https://github.com/user-attachments/assets/623350d1-9a38-4c16-8ef1-5b5086818ce1)
 ![Screenshot 2025-02-19 164627](https://github.com/user-attachments/assets/3fb1a28f-a11e-43ca-8dd7-ffae6f68ef8e)
 
-<p>Attempt to login with it</p>
+<p>- Try logging in with the created account</p>
+<p>- Ensure that the login is successful.</p>
 <br />
 
 <h3> Enabling and Disabling Accounts</h3>
 <br />
 
+<h3>1. Disable the User Account in ADUC:</h3>
+<br />
+
 ![Screenshot 2025-02-19 165202](https://github.com/user-attachments/assets/2e169116-ce99-45dc-9793-942abe04b587)
 
-<p>Disable the same account in Active Directory</p>
+<p>- Right-click on the user account in ADUC and select Disable the same account in Active Directory</p>
+<br />
+
+<h3>2. Attempt to Log in with the Disabled Account:</h3>
 <br />
 
 ![Screenshot 2025-02-19 165330](https://github.com/user-attachments/assets/71d7a2d7-a185-41a2-81d4-4bd4df8a576b)
 
-<p>Attempt to login with it, observe the error message</p>
+<p>- Attempt to login with the disabled user account.</p>
+<p>- Observe the error message indicating that the account is disabled.</p>
+<br />
+
+<h3>3. Re-enable the Account:</h3>
 <br />
 
 ![Screenshot 2025-02-19 165351](https://github.com/user-attachments/assets/136dae3f-dc26-4cdb-8be7-82e1af54339a)
 
-<p>Re-enable the account and attempt to login with it.</p>
+<p>- Right-click on the user account in ADUC and select Enable Account.</p>
+<p>- Attempt to logging in with the same user account.</p>
+<p>- Confirm that the login is successful and now the account has been re-enabled.</p>
 <br />
 
-<h3>Observing Logs</h3>
+<h3>4. Observe Logs on Domain Controller</h3>
 <br />
 
 ![Screenshot 2025-02-19 165738](https://github.com/user-attachments/assets/d2c79441-a783-4e70-9498-7fbb64de1cce)
 
-<p>Observe the logs in the Domain Controller</p>
+<p>- Open Event Viewer on DC-1 by pressing Windows + R, typing eventvwr.msc, and pressing Enter.</p>
 <br />
 
 ![Screenshot 2025-02-19 170324](https://github.com/user-attachments/assets/887f48ae-eda0-415e-8639-3cd1d8affe47)
 
-<p>In the Event Viewer, expand the following:</p>
-<p>Event Viewer > Windows Logs > Security > right click "find" > input the name of the user</p>
-<p>Observe the logs on the client Machine</p>
+<p>- In the Event Viewer, go to Windows Logs > Security.</p>
+<p>- Look for log entries related to Account Lockout and Failed Logins (Event ID 4625 for Audit Failure).</p>
 <br />
 
