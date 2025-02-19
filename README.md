@@ -141,20 +141,29 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 ![Screenshot 2025-02-18 164051](https://github.com/user-attachments/assets/16c015ec-c3f7-43bf-a977-282c0803835e)
 
 <p>Allow the server to restart and then log back into DC-1 as user: mydomain.com\labuser</p>
+<p>Then log back in to DC-1 using the credentials: mydomain.com\labuser.</p>
+<br />
+
+<h3>3. Create Domain Admin User</h3>
 <br />
 
 ![Screenshot 2025-02-18 164835](https://github.com/user-attachments/assets/e520ec0a-14bd-40eb-b704-f3e18430e180)
+<p><b>Open Active Directory Users and Computers (ADUC):</b></p>
+<p>- Press Windows + R, type dsa.msc, and press Enter to open ADUC or click start and search "Active Directory Users and Computers"</p>
+
 ![Screenshot 2025-02-18 165019](https://github.com/user-attachments/assets/81f2f444-5adc-4b76-b64c-d9a594e7dc5b)
 ![Screenshot 2025-02-18 165057](https://github.com/user-attachments/assets/0edea339-a3a6-4a6a-985f-fd7fca061e4e)
-
+<p><b>Create an Organizational Unit (OU) for Employees:</b></p>
+<p>- In ADUC, right-click on the domain (e.g., mydomain.com), and choose New > Organizational Unit.</p>
 <p>In Active Directory Users and Computers (ADUC), create an Organizational Unit
  (OU) called “_EMPLOYEES”</p>
 <br />
 
-
 ![Screenshot 2025-02-18 165121](https://github.com/user-attachments/assets/b80956a7-d5bd-4d08-b253-5787331f4d0f)
 ![Screenshot 2025-02-18 165223](https://github.com/user-attachments/assets/c61ff929-3eed-4181-ad0e-5571bc693014)
 
+<p><b>Create an Organizational Unit (OU) for Admins:</b></p>
+<p>Right-click on the domain again, and choose New > Organizational Unit.</p>
 <p>Create a new OU named “_ADMINS”</p>
 <br />
 
@@ -162,8 +171,8 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 ![Screenshot 2025-02-18 165523](https://github.com/user-attachments/assets/8495e83e-cda9-42c4-9b4f-71ea7b0f95af)
 ![Screenshot 2025-02-18 165644](https://github.com/user-attachments/assets/07a587bf-9088-4772-888d-cbd233c6b5f3)
 
-<p> Create a new employee named “Jane Doe” with the username
- of “jane_admin”</p>
+<p><b>Create a new employee named “Jane Doe” with the username
+ of “jane_admin”</b></p>
 <br />
 
 ![Screenshot 2025-02-18 165749](https://github.com/user-attachments/assets/d4acfe81-18a5-4ddb-ac6c-218c80ad7adf)
@@ -173,9 +182,9 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 
 ![Screenshot 2025-02-18 165926](https://github.com/user-attachments/assets/9efce4ba-24ed-46c2-9d7c-457da4e41b49)
 
-<p>Log out / close the connection to DC-1 and log back in as
- “mydomain.com\jane_admin”</p>
-<p>User jane_admin as your admin account from now on</p>
+<p><b>Log out / close the connection to DC-1 and log back in as
+ “mydomain.com\jane_admin”</b></p>
+<p>User jane_admin as the admin account from now on</p>
 <br />
 
 ![Screenshot 2025-02-18 170529](https://github.com/user-attachments/assets/6d863162-30e4-4c4e-832e-4943bb7c3095)
