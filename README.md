@@ -195,7 +195,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 
 <p>Login to Client-1 as the original local admin (labuser) and join it to the domain
  (computer will restart)</p>
-<p>Login to the Domain Controller and verify Client-1 shows up in ADUC</p>
+<p>Then verify Client-1 shows up in ADUC</p>
 <br />
 
 ![Screenshot 2025-02-18 171125](https://github.com/user-attachments/assets/639b8615-1a47-4443-8802-b31e6279c0e1)
@@ -206,12 +206,15 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <br />
 
 <h2>Set Up Remote Desktop for Non-Administrative Users on Client-1</h2>
+<br />
+
+<h3>Log into Client-1 as mydomain.com\jane_admin<h3>
 
 ![Screenshot 2025-02-18 180520](https://github.com/user-attachments/assets/a6734aea-0ffa-4b7b-af5e-9b37e34a413a)
 ![Screenshot 2025-02-18 180659](https://github.com/user-attachments/assets/9253762b-a2d7-4d51-96c8-1a54050a37b8)
 
-<p>Log into Client-1 as mydomain.com\jane_admin</p>
-<p>Open system properties</p>
+<p><b>Open system properties</b></p>
+<p>- Go to "settings" then "Remote Desktop"</p>
 <br />
 
 ![Screenshot 2025-02-18 180840](https://github.com/user-attachments/assets/b7e06eab-353f-4d5d-84a3-19ef13bb9fe0)
