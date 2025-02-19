@@ -406,7 +406,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <p>- Ensure that the login is successful.</p>
 <br />
 
-<h3> Enabling and Disabling Accounts</h3>
+<h2> Enabling and Disabling Accounts</h2>
 <br />
 
 <h3>1. Disable the User Account in ADUC:</h3>
