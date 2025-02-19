@@ -207,18 +207,23 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <h2>Set Up Remote Desktop for Non-Administrative Users on Client-1</h2>
 <br />
 
-<h3>1. Log into Client-1 as mydomain.com\jane_admin<h3>
+<h3>1. Log into Client-1 as "mydomain.com\jane_admin"<h3>
 
 ![Screenshot 2025-02-18 180520](https://github.com/user-attachments/assets/a6734aea-0ffa-4b7b-af5e-9b37e34a413a)
-![Screenshot 2025-02-18 180659](https://github.com/user-attachments/assets/9253762b-a2d7-4d51-96c8-1a54050a37b8)
 
 <h3>2. Open system properties</h3>
+<br />
+
+![Screenshot 2025-02-18 180659](https://github.com/user-attachments/assets/9253762b-a2d7-4d51-96c8-1a54050a37b8)
+
 <p>- Go to "settings" then click to "Remote Desktop"</p>
+<br />
+
+<h3>3. Allow Domain Users Access to Remote Desktop:</h3>
 <br />
 
 ![Screenshot 2025-02-18 180840](https://github.com/user-attachments/assets/b7e06eab-353f-4d5d-84a3-19ef13bb9fe0)
 
-<h3>3. Allow Domain Users Access to Remote Desktop:</h3>
 <p>- In the Remote Desktop Users window, click Add.</p>
 <p>- Type Domain Users and click OK to allow all domain users to access Remote Desktop.</p>
 <br />
@@ -228,24 +233,30 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <p>- Confirm that the user can successfully log in via Remote Desktop.</p>
 <br />
 
+<h3>2. Open PowerShell_ise as an administrator</h3>
+<br />
+
 ![Screenshot 2025-02-18 181940](https://github.com/user-attachments/assets/b04dbeaa-ad29-4ce7-a6c8-93489f0a838e)
 
-<p>- Open PowerShell_ise as an administrator</p>
+<p>- Open PowerShell ISE.</p>
+<br />
+
+<h3>3. Create a new File</h3>
 <br />
 
 ![Screenshot 2025-02-18 182708](https://github.com/user-attachments/assets/7882f3f7-b519-4f4e-9d88-a0b4ef30ac10)
-
-<p>Create a new File and paste the contents of the <a href=https://github.com/mark-afortadera/AD_PS/blob/master/Generate-Names-Create-Users.ps1>script</a> into it</p>
-<br />
-
 ![Screenshot 2025-02-18 185259](https://github.com/user-attachments/assets/b2dfaff3-15e5-4851-bbd8-96a20a8a1c4e)
 
-<p>Run the script and observe the accounts being created</p>
+<p>- paste the contents of the <a href=https://github.com/mark-afortadera/AD_PS/blob/master/Generate-Names-Create-Users.ps1>script</a> into it</p></p>
+<p>- Run the script and observe the accounts being created</p>
 <br />
+
+<h3>4. Run the Script:</h3>
 
 ![Screenshot 2025-02-18 185337](https://github.com/user-attachments/assets/52e31039-cb44-4602-8ceb-82bdfa8185c7)
 
-<p>When finished, open ADUC and observe the accounts in the appropriate OU　
+<p>- Click Run or press F5 to execute the script.</p>
+<p>- When finished, open ADUC and observe the accounts in the appropriate OU　
 (_EMPLOYEES)</p>
 <br />
 
