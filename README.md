@@ -208,48 +208,59 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <p>- Then log back in to DC-1 using the credentials: mydomain.com\labuser.</p>
 <br />
 
-<h3>4. Create Domain Admin User</h3>
+<h2>Create Domain Admin User</h2>
+<br />
+
+<h3>1. Open Active Directory Users and Computers (ADUC):</h3>
 <br />
 
 ![Screenshot 2025-02-18 164835](https://github.com/user-attachments/assets/e520ec0a-14bd-40eb-b704-f3e18430e180)
-<p><b>Open Active Directory Users and Computers (ADUC):</b></p>
 <p>- Press Windows + R, type dsa.msc, and press Enter to open ADUC or click start and search "Active Directory Users and Computers"</p>
+<br />
+
+<h3>2. Create an Organizational Unit (OU) for Employees:</h3>
 <br />
 
 ![Screenshot 2025-02-18 165019](https://github.com/user-attachments/assets/81f2f444-5adc-4b76-b64c-d9a594e7dc5b)
 ![Screenshot 2025-02-18 165057](https://github.com/user-attachments/assets/0edea339-a3a6-4a6a-985f-fd7fca061e4e)
-<p><b>Create an Organizational Unit (OU) for Employees:</b></p>
 <p>- In ADUC, right-click on the domain (e.g., mydomain.com), and choose New > Organizational Unit.</p>
-<p>In Active Directory Users and Computers (ADUC), create an Organizational Unit
+<p>- In Active Directory Users and Computers (ADUC), create an Organizational Unit
  (OU) called “_EMPLOYEES”</p>
+<br />
+
+<h3>3. Create an Organizational Unit (OU) for Admins:</h3>
 <br />
 
 ![Screenshot 2025-02-18 165121](https://github.com/user-attachments/assets/b80956a7-d5bd-4d08-b253-5787331f4d0f)
 ![Screenshot 2025-02-18 165223](https://github.com/user-attachments/assets/c61ff929-3eed-4181-ad0e-5571bc693014)
 
-<p><b>Create an Organizational Unit (OU) for Admins:</b></p>
-<p>Right-click on the domain again, and choose New > Organizational Unit.</p>
-<p>Create a new OU named “_ADMINS”</p>
+<p>- Right-click on the domain again, and choose New > Organizational Unit.</p>
+<p>- Create a new OU named “_ADMINS”</p>
+<br />
+
+<h3>4. Create a new employee named “Jane Doe” with the username of “jane_admin”</h3>
 <br />
 
 ![Screenshot 2025-02-18 165306](https://github.com/user-attachments/assets/d8986bbb-33b7-4909-8a6c-ef078cb59af5)
 ![Screenshot 2025-02-18 165523](https://github.com/user-attachments/assets/8495e83e-cda9-42c4-9b4f-71ea7b0f95af)
 ![Screenshot 2025-02-18 165644](https://github.com/user-attachments/assets/07a587bf-9088-4772-888d-cbd233c6b5f3)
+<br />
 
-<p><b>Create a new employee named “Jane Doe” with the username
- of “jane_admin”</b></p>
+<h3>5. Add jane_admin to the “Domain Admins” Security Group</h3>
 <br />
 
 ![Screenshot 2025-02-18 165749](https://github.com/user-attachments/assets/d4acfe81-18a5-4ddb-ac6c-218c80ad7adf)
+<p>- Right-click on Domain Admins in ADUC, and choose Properties then click on Add.</p>
+<p>- In the Enter the object names to select field, type jane_admin and click Check Names then click OK to add the user.</p>
+<br />
 
-<p>Add jane_admin to the “Domain Admins” Security Group</p>
+<h3>6. Log out and close the connection to DC-1 and log back in as “mydomain.com\jane_admin”</h3>
 <br />
 
 ![Screenshot 2025-02-18 165926](https://github.com/user-attachments/assets/9efce4ba-24ed-46c2-9d7c-457da4e41b49)
 
-<p><b>Log out / close the connection to DC-1 and log back in as
- “mydomain.com\jane_admin”</b></p>
-<p>User jane_admin as the admin account from now on</p>
+<p>- Log out of DC-1.</p>
+<p>- Login back into DC-1 using mydomain.com\jane_admin and the password</p>
 <br />
 
 <h3>4. Join "Client-1" to the Domain Server (mydomain.com)</h3>
