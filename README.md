@@ -263,21 +263,43 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <p>- Login back into DC-1 using mydomain.com\jane_admin and the password</p>
 <br />
 
-<h3>4. Join "Client-1" to the Domain Server (mydomain.com)</h3>
+<h2>Join "Client-1" to the Domain Server (mydomain.com)</h2>
+<br />
+
+<h3>1. Join "Client-1" to "DC-1":</h3>
 <br />
 
 ![Screenshot 2025-02-18 170529](https://github.com/user-attachments/assets/6d863162-30e4-4c4e-832e-4943bb7c3095)
 ![Screenshot 2025-02-18 170644](https://github.com/user-attachments/assets/33fd511e-123f-4a5f-9868-3cc472c69074)
 
-<p>Login to Client-1 as the original local admin (labuser) and join it to the domain
- (computer will restart)</p>
-<p>Then verify Client-1 shows up in ADUC</p>
+<p>- Login to Client-1 as the original local admin (labuser).</p>
+<p>- In the System window, click on "Rename this PC".</p>
+<p>- Then in the "Computer Name" click "Change"</p>
+<p>- In the Member of section, select Domain and enter "mydomain.com" as the domain name then Click "Ok"</p>
+<p>- In the domain credentials, enter "mydomain.com\jane_admin" and the corresponding password.</p>
+<p>- After the domain is successfully joined, click OK to restart the computer.</p>
+<p>- Then log back in and verify Client-1 in Active Directory</p>
+<br />
+
+<h2>Create a New Organizational Unit (OU) and Move Client-1</h2>
+<br />
+
+<h3>1. Create the "_CLIENTS" OU:</h3>
 <br />
 
 ![Screenshot 2025-02-18 171125](https://github.com/user-attachments/assets/639b8615-1a47-4443-8802-b31e6279c0e1)
+
+<p>- In ADUC, right-click on mydomain.com and select New > Organizational Unit.</p>
+<p>- Name the new OU _CLIENTS and click OK.</p>
+
+<h3>2. Move Client-1 into the "_CLIENTS" OU:</h3>
+<br />
+
 ![Screenshot 2025-02-18 171235](https://github.com/user-attachments/assets/b9fc8da2-f659-43fc-bc6a-045f13ba70da)
 
-<p>Create a new OU named “_CLIENTS” and drag Client-1 into there (same steps as how "_EMPLOYEES" and "_ADMINS" group were created.</p>
+<p>- Find Client-1 under the Computers container.</p>
+<p>- Right-click on "Client-1" and select Move or drag "Client-1" to the newly created "_CLIENTS" OU.</p>
+<p>- Click "OK".</p>
 <br />
 
 <h2>Set Up Remote Desktop for Non-Administrative Users on Client-1</h2>
