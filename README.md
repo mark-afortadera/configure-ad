@@ -386,7 +386,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <p>- Under the Account tab, uncheck Account is locked out and click OK.</p>
 <br />
 
-<h3>3. <p>Reset the password</h3>
+<h3>3. Reset the password</h3>
 <br />
 
 ![Screenshot 2025-02-19 164215](https://github.com/user-attachments/assets/ea5edfd5-b916-4ffd-8b06-506b99e4f31f)
