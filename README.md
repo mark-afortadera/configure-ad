@@ -269,46 +269,61 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <p>- Attempt to log into Client-1 with one of the accounts or as "menu.suq" user.)</p>
 <br />
 
-<h3>6. Verify Accounts in ADUC:</h3>
+<h3>6. Attempt to Log Into Client-1 as the Created User:</h3>
 <br />
 
 ![Screenshot 2025-02-18 185804](https://github.com/user-attachments/assets/b60b7f13-7932-4f4f-a7f8-e1fca11df189)
+
+<p>- Log out of Client-1 and try logging in as one of the newly created users.</p>
+<p>- Use the password specified in the PowerShell script.</p>
+<br />
+
+<h3>7. Verify Successful Login:</h3>
+<br />
+
 ![Screenshot 2025-02-18 190022](https://github.com/user-attachments/assets/253c6455-a0c9-412d-b340-e693634121ed)
 
+<p>- Confirm that the new user can successfully log in to Client-1 through Remote Desktop.</p>
 <p>- Client-1 is now logged in as "menu.suq" user.</p>
 <br />
 
 <h2>Dealing with Account Lockouts</h2>
 <br />
 
+<h3>1. Open the Group Policy Management Console (GPMC)</h3>
+<br />
+
 ![Screenshot 2025-02-19 155921](https://github.com/user-attachments/assets/95faaf00-270b-40c3-987a-a27d8bac98e8)
 
-<h3>1. Open the Group Policy Management Console (GPMC)</h3>
-<p>Log in to a machine with Group Policy Management Console installed (typically, a Domain Controller)</p>
-<p>Click Start, and type gpmc.msc in the search box, then press Enter. This opens the Group Policy Management Console.</p>
+<p>- Log in to a machine with Group Policy Management Console installed (typically, a Domain Controller)</p>
+<p>- Click Start, and type gpmc.msc in the search box, then press Enter. This opens the Group Policy Management Console.</p>
+<br />
+
+<h3>2. Create or Edit a Group Policy Object (GPO)</h3>
 <br />
 
 ![Screenshot 2025-02-19 160341](https://github.com/user-attachments/assets/fb6086e5-f1b0-4576-bc41-1901ddf86736)
 
-<h3>2. Create or Edit a Group Policy Object (GPO)</h3>
-<p>In the GPMC, navigate to the Group Policy Objects section.</p>
-<p>Right-click Group Policy Objects and select New to create a new GPO, or right-click an existing GPO and select Edit to modify it.</p>
+<p>- In the GPMC, navigate to the Group Policy Objects section.</p>
+<p>- Right-click Group Policy Objects and select New to create a new GPO, or right-click an existing GPO and select Edit to modify it.</p>
 <p>- Give the new GPO a descriptive name if you're creating a new one, like "Account Lockout Policy"</p>
+<br />
+
+<h3>3. Navigate to the Account Lockout Policy Settings</h3>
 <br />
 
 ![Screenshot 2025-02-19 160537](https://github.com/user-attachments/assets/36d13b28-79fb-4e2c-bc3a-e026efbacfe0)
 
-<h3>3. Navigate to the Account Lockout Policy Settings</h3>
-<p>In the Group Policy Management Editor, expand the following:</p>
+<p>- In the Group Policy Management Editor, expand the following:</p>
 <p>- Computer Configuration > Policies > Windows Settings > Security Settings > Account Policies > Account Lockout Policy.</p>
 <br />
 
+<h3>4. Configure Account Lockout Policy Settings</h3>
+<br />
 
 ![Screenshot 2025-02-19 161003](https://github.com/user-attachments/assets/0a3300e4-1b02-4755-b607-e29917816f38)
 ![Screenshot 2025-02-19 161238](https://github.com/user-attachments/assets/fa47eb71-ad4b-47a5-bb14-68d4282351d2)
 
-
-<h3>4. Configure Account Lockout Policy Settings</h3>
 <p><b>Account Lockout Duration:</b></p>
 <p>- Definition: The time in minutes that an account remains locked before it is automatically unlocked.</p>
 <p>- Configuration: Double-click on this setting, select Define this policy setting, and then set the duration (e.g., 30 minutes).</p>
@@ -320,22 +335,24 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <p>- Configuration: Double-click on this setting, select Define this policy setting, and then set the time (e.g., 15 minutes).</p>
 <br />
 
+<h3>5. Update Group Policy</h3>
+<br />
+
 ![Screenshot 2025-02-19 162110](https://github.com/user-attachments/assets/10ee204d-e6b3-4f49-8a4e-617f222bafda)
 ![Screenshot 2025-02-19 162429](https://github.com/user-attachments/assets/dd25b82c-d0e6-42f6-a789-ab06e1341679)
 
-<h3>5. Update Group Policy</h3>
 <p>You can wait for the Group Policy to propagate automatically, or you can force an update immediately.</p>
 <p>- On a client machine or server, open Command Prompt and type gpupdate /force, then press Enter.</p>
 <br />
 
+<h3>6. Verify the Policy</h3>
+<br />
 
 ![Screenshot 2025-02-19 163448](https://github.com/user-attachments/assets/f40ce7a2-52ea-48f9-b292-f6a98d1b107f)
 
-<h3>6. Verify the Policy</h3>
 <p>To verify the policy, you can use the rsop.msc (Resultant Set of Policy) tool on a client machine to see the applied settings.</p>
 <p>Alternatively, you can also check the settings using the Group Policy Management Console.</p>
 <br />
-
 
 <h3>Important Considerations</h3>
 <p><b>Account Lockout Threshold:</b> Setting this too low (e.g., 1 or 2 attempts) can lead to unnecessary lockouts.</p>
