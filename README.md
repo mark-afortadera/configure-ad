@@ -104,10 +104,10 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <br />
 
 
-<h3>Install Active Directory on DC-1</h3>
+<h2>Install Active Directory on DC-1</h2>
 <br />
 
-<p><b>1. Login to DC-1 and install Active Directory Domain Services</b></p>
+<h3>1. Login to DC-1 and install Active Directory Domain Services</h3>
 <br />
 
 ![Screenshot 2025-02-18 162949](https://github.com/user-attachments/assets/2a787513-bbc0-4258-95c8-6b531a286657)
@@ -136,7 +136,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <p>Choose Add a new forest and enter mydomain.com as the root domain (remember this domain name for later steps).</p>
 
 ![Screenshot 2025-02-18 163849](https://github.com/user-attachments/assets/c66d35f8-4c42-4eff-b784-6f31e94a2a45)
-<p>Complete the wizard</p>
+<p>Complete the AD Domain Service Configuration Wizard</p>
 
 ![Screenshot 2025-02-18 164051](https://github.com/user-attachments/assets/16c015ec-c3f7-43bf-a977-282c0803835e)
 
