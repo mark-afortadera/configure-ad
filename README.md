@@ -275,7 +275,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 ![Screenshot 2025-02-18 185804](https://github.com/user-attachments/assets/b60b7f13-7932-4f4f-a7f8-e1fca11df189)
 ![Screenshot 2025-02-18 190022](https://github.com/user-attachments/assets/253c6455-a0c9-412d-b340-e693634121ed)
 
-<p>Client-1 is now able to log in as "menu.suq" or non-administrative user now</p>
+<p>- Client-1 is now logged in as "menu.suq" user.</p>
 <br />
 
 <h2>Dealing with Account Lockouts</h2>
