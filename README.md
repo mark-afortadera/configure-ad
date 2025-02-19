@@ -32,7 +32,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 - Disabling and Re-enabling Accounts
 - Observe Logs on Client Machine
 
-<h2>Deployment and Configuration Steps</h2>
+<h2>Deployment and Configuration Steps:</h2>
 <br />
 
 <h2>Set Up Domain Controller (DC-1) in Azure</h2>
@@ -164,45 +164,57 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <br />
 
 ![Screenshot 2025-02-18 162949](https://github.com/user-attachments/assets/2a787513-bbc0-4258-95c8-6b531a286657)
-<p>Open Server Manager.</p>
+
+<p>- Use DC-1 credentials to log into the Domain Controller Server.</p>
+<p>- Open Server Manager.</p>
+<br />
+
+<h3>2. Install Active Directory Domain Services (AD DS):</h3>
+<br />
 
 ![Screenshot 2025-02-18 162957](https://github.com/user-attachments/assets/b2d7ce81-6c30-463e-8ea2-c79ed3489adb)
 <p>Click on Add roles and features.</p>
+<br />
 
 ![Screenshot 2025-02-18 163103](https://github.com/user-attachments/assets/f012d2ba-d9bd-4a0f-a51a-f0e162ebfeda)
 ![Screenshot 2025-02-18 163120](https://github.com/user-attachments/assets/6c1b3dad-bfe8-4c30-974d-08722fc23fb1)
-<p>In the Role-based or feature-based installation window, select Active Directory Domain Services.</p>
+
+<p>- In the Role-based or feature-based installation window, select Active Directory Domain Services.</p>
+<br />
 
 ![Screenshot 2025-02-18 163146](https://github.com/user-attachments/assets/5077cd9e-5547-4f78-a21a-07c284d3fbc9)
 
-<p>Follow the prompts to install it.</p>
+<p>- Follow the prompts to install it.</p>
 <br />
 
-<h3>2. Promote DC-1 as a Domain Controller (DC)</h3>
-<p><b>- Promote to Domain Controller:</b></p>
+<h3>3. Promote DC-1 as a Domain Controller (DC):</h3>
 <br />
 
 ![Screenshot 2025-02-18 163508](https://github.com/user-attachments/assets/ef031d32-088e-4080-b12f-b12c44c752dd)
-<p>After installation, in Server Manager, click the notification flag and select Promote this server to a domain controller.</p>
+<p>- After installation, in Server Manager, click the notification flag and select Promote this server to a domain controller.</p>
+<br />
 
 ![Screenshot 2025-02-18 163655](https://github.com/user-attachments/assets/3da5ba08-b8d1-4f57-be5e-67281a5e6c66)
-<p>Choose Add a new forest and enter mydomain.com as the root domain (remember this domain name for later steps).</p>
+<p>- Choose Add a new forest and enter mydomain.com as the root domain (remember this domain name for later steps).</p>
+<br />
 
 ![Screenshot 2025-02-18 163849](https://github.com/user-attachments/assets/c66d35f8-4c42-4eff-b784-6f31e94a2a45)
-<p>Complete the AD Domain Service Configuration Wizard</p>
+<p>- Complete the AD Domain Service Configuration Wizard</p>
+<br />
 
 ![Screenshot 2025-02-18 164051](https://github.com/user-attachments/assets/16c015ec-c3f7-43bf-a977-282c0803835e)
 
-<p>Allow the server to restart and then log back into DC-1 as user: mydomain.com\labuser</p>
-<p>Then log back in to DC-1 using the credentials: mydomain.com\labuser.</p>
+<p>- Allow the server to restart and then log back into DC-1 as user: mydomain.com\labuser</p>
+<p>- Then log back in to DC-1 using the credentials: mydomain.com\labuser.</p>
 <br />
 
-<h3>3. Create Domain Admin User</h3>
+<h3>4. Create Domain Admin User</h3>
 <br />
 
 ![Screenshot 2025-02-18 164835](https://github.com/user-attachments/assets/e520ec0a-14bd-40eb-b704-f3e18430e180)
 <p><b>Open Active Directory Users and Computers (ADUC):</b></p>
 <p>- Press Windows + R, type dsa.msc, and press Enter to open ADUC or click start and search "Active Directory Users and Computers"</p>
+<br />
 
 ![Screenshot 2025-02-18 165019](https://github.com/user-attachments/assets/81f2f444-5adc-4b76-b64c-d9a594e7dc5b)
 ![Screenshot 2025-02-18 165057](https://github.com/user-attachments/assets/0edea339-a3a6-4a6a-985f-fd7fca061e4e)
