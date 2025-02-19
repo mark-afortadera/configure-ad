@@ -33,36 +33,70 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 - Observe Logs on Client Machine
 
 <h2>Deployment and Configuration Steps</h2>
+<br />
+
+<h2>Set Up Domain Controller (DC-1) in Azure</h2>
+<br />
+
+<h3>1. Create a Resource Group:</h3>
+<br />
 
 ![Screenshot 2025-02-18 153447](https://github.com/user-attachments/assets/f30d5175-d68d-4336-a34b-1efa32cc46b5)
 
-<p>Create a Resource Group</p>
+<p>- In the Azure Portal, click on Create a resource then select Resource Group.</p>
+<p>- Enter a Resource Group name (e.g., Active Directory-Lab).</p>
+<p>- Choose the Region where you want to deploy your resources</p>
+<p>- Click Review + Create and then Create.</p>
+<br />
+
+<h3>2. Create a Virtual Network and Subnet:</h3>
 <br />
 
 ![Screenshot 2025-02-18 153433](https://github.com/user-attachments/assets/9c908c42-1ded-4f33-b2a0-1c182a19936f)
 
-<p>Create a Virtual Network and Subnet</p>
+<p>- In the Azure Portal, click Create a resource > Networking > Virtual Network.</p>
+<p>- Set the Name (e.g., Active-Directory-VNet), Region, and Address Space (e.g., 10.0.0.0/16).</p>
+<p>- Click Review + Create and then Create.</p>
+<br />
+
+<h3>3. Create the Domain Controller VM (Windows Server 2022):</h3>
 <br />
 
 ![Screenshot 2025-02-18 153508](https://github.com/user-attachments/assets/12f298d1-30e9-4a8c-9454-0df0fffdee07)
 
-<p>Create the Domain Controller VM (Windows Server 2022) named “DC-1”</p>
+<p>- In the Azure Portal, click Create a resource > Compute > Windows Server 2022.</p>
+<p>- Create the Domain Controller VM (Windows Server 2022) named “DC-1”</p>
+<p>- Choose the Size then set Region to match the Virtual Network created earlier.</p>
+<p>- Set NIC to use Dynamic IP initially (will change to Static later).</p>
+<p>- Click Review + Create and then Create.</p>
+<br />
+
+<h3>4. Set Domain Controller’s NIC Private IP to Static:</h3>
 <br />
 
 ![Screenshot 2025-02-18 153836](https://github.com/user-attachments/assets/91199271-677a-4748-82ee-01f66039d948)
 ![Screenshot 2025-02-18 153943](https://github.com/user-attachments/assets/36e344ae-3d96-4a4c-8e35-f68ebf04afd5)
 
-<p>After VM is created, set Domain Controller’s NIC Private IP address to be static</p>
+<p>- After VM creation, go to Network Interface > IP Configuration.</p>
+<p>- Click on the Private IP address and set it to Static then Save the changes.</p>
 <br />
 
-![Screenshot 2025-02-18 154259](https://github.com/user-attachments/assets/414cd021-aaec-4658-a0f0-3644188def68)
+<h3>5. Log into DC-1 and Disable Windows Firewall:</h3>
+<br />
+
 ![Screenshot 2025-02-18 154328](https://github.com/user-attachments/assets/9e373287-3f16-4408-a01a-cd094709ff54)
+
+<p>- Open Windows Defender Firewall and select Turn Windows Defender Firewall on or off.</p>
+<br />
+
 ![Screenshot 2025-02-18 154355](https://github.com/user-attachments/assets/c143dbac-ed9c-4cd0-84f4-7e3d0a3bfe96)
 ![Screenshot 2025-02-18 154409](https://github.com/user-attachments/assets/e1654f0a-9f40-4bd6-be70-372c48f5c6a5)
 ![Screenshot 2025-02-18 154421](https://github.com/user-attachments/assets/52d661af-828c-4116-821c-5e88628b8575)
 
-<p>Log into the VM and disable the Windows Firewall (for testing connectivity)</p>
+<p>- Select Turn off Windows Defender Firewall for both Private and Public networks (for testing purposes) then Click OK to save.</p>
 <br />
+
+<h2>Set Up Client-1 in Azure</h2>
 
 ![Screenshot 2025-02-18 153516](https://github.com/user-attachments/assets/2e459b53-0d41-44c5-96bb-a32b6d8f991c)
 
