@@ -247,26 +247,31 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 ![Screenshot 2025-02-18 182708](https://github.com/user-attachments/assets/7882f3f7-b519-4f4e-9d88-a0b4ef30ac10)
 ![Screenshot 2025-02-18 185259](https://github.com/user-attachments/assets/b2dfaff3-15e5-4851-bbd8-96a20a8a1c4e)
 
-<p>- paste the contents of the <a href=https://github.com/mark-afortadera/AD_PS/blob/master/Generate-Names-Create-Users.ps1>script</a> into it</p></p>
-<p>- Run the script and observe the accounts being created</p>
+<p>- Click File > New to create a new file.</p>
+<p>- Paste the contents of the <a href=https://github.com/mark-afortadera/AD_PS/blob/master/Generate-Names-Create-Users.ps1>script</a> into it</p></p>
 <br />
 
 <h3>4. Run the Script:</h3>
 
 ![Screenshot 2025-02-18 185337](https://github.com/user-attachments/assets/52e31039-cb44-4602-8ceb-82bdfa8185c7)
 
-<p>- Click Run or press F5 to execute the script.</p>
-<p>- When finished, open ADUC and observe the accounts in the appropriate OU　
-(_EMPLOYEES)</p>
+<p>- Click the "Run" button to run the script and observe the accounts being created</p></p>
+<p>- When finished, open ADUC and observe the accounts in the appropriate OU (_EMPLOYEES)</p>
 <br />
 
-![Screenshot 2025-02-18 185524](https://github.com/user-attachments/assets/62741149-4338-4740-969f-57a330a1b1e1)
-
-<p>attempt to log into Client-1 with one of the accounts (take note of the password in
- the script)</p>
+<h3>5. Log in as Non-Administrator User</h3>
 <br />
 
 ![Screenshot 2025-02-18 185706](https://github.com/user-attachments/assets/63a2fe9b-2540-452c-b02f-36238f34ed23)
+
+<p>- Go to Active Directory Users and Computers (ADUC).</p>
+<p>- Navigate to the _EMPLOYEES Organizational Unit (OU).</p>
+<p>- Attempt to log into Client-1 with one of the accounts or as "menu.suq" user.)</p>
+<br />
+
+<h3>6. Verify Accounts in ADUC:</h3>
+<br />
+
 ![Screenshot 2025-02-18 185804](https://github.com/user-attachments/assets/b60b7f13-7932-4f4f-a7f8-e1fca11df189)
 ![Screenshot 2025-02-18 190022](https://github.com/user-attachments/assets/253c6455-a0c9-412d-b340-e693634121ed)
 
