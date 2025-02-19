@@ -201,34 +201,36 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 ![Screenshot 2025-02-18 171125](https://github.com/user-attachments/assets/639b8615-1a47-4443-8802-b31e6279c0e1)
 ![Screenshot 2025-02-18 171235](https://github.com/user-attachments/assets/b9fc8da2-f659-43fc-bc6a-045f13ba70da)
 
-
 <p>Create a new OU named “_CLIENTS” and drag Client-1 into there (same steps as how "_EMPLOYEES" and "_ADMINS" group were created.</p>
 <br />
 
 <h2>Set Up Remote Desktop for Non-Administrative Users on Client-1</h2>
 <br />
 
-<h3>Log into Client-1 as mydomain.com\jane_admin<h3>
+<h3>1. Log into Client-1 as mydomain.com\jane_admin<h3>
 
 ![Screenshot 2025-02-18 180520](https://github.com/user-attachments/assets/a6734aea-0ffa-4b7b-af5e-9b37e34a413a)
 ![Screenshot 2025-02-18 180659](https://github.com/user-attachments/assets/9253762b-a2d7-4d51-96c8-1a54050a37b8)
 
-<p><b>Open system properties</b></p>
-<br />
-<p>- Go to "settings" then "Remote Desktop"</p>
+<h3>2. Open system properties</h3>
+<p>- Go to "settings" then click to "Remote Desktop"</p>
 <br />
 
 ![Screenshot 2025-02-18 180840](https://github.com/user-attachments/assets/b7e06eab-353f-4d5d-84a3-19ef13bb9fe0)
 
-<p>Click “Remote Desktop”</p>
-<p>Allow “domain users” access to remote desktop</p>
+<h3>3. Allow Domain Users Access to Remote Desktop:</h3>
+<p>- In the Remote Desktop Users window, click Add.</p>
+<p>- Type Domain Users and click OK to allow all domain users to access Remote Desktop.</p>
+<br />
+
+<h2>Create Multiple Users via PowerShell on DC-1</h2>
+<h3>1. Login to DC-1 as jane_admin</h3>
+<p>- Confirm that the user can successfully log in via Remote Desktop.</p>
 <br />
 
 ![Screenshot 2025-02-18 181940](https://github.com/user-attachments/assets/b04dbeaa-ad29-4ce7-a6c8-93489f0a838e)
 
-
-<p>Login to DC-1 as jane_admin</p>
-<p>Open PowerShell_ise as an administrator</p>
+<p>- Open PowerShell_ise as an administrator</p>
 <br />
 
 ![Screenshot 2025-02-18 182708](https://github.com/user-attachments/assets/7882f3f7-b519-4f4e-9d88-a0b4ef30ac10)
