@@ -3,7 +3,7 @@
 </p>
 
 <h1>On-premises Active Directory Deployed in the Cloud (Azure)</h1>
-This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
+This walkthrough outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
 
 
 <h2>Environments and Technologies Used</h2>
@@ -27,7 +27,11 @@ This tutorial outlines the implementation of on-premises Active Directory within
 - Join Client-1 to your domain (mydomain.com)
 - Setup Remote Desktop for non-administrative users on Client-1
 - Create a bunch of additional users and attempt to log into client-1 with one
- of the users
+  of the users
+- Configuring an account lockout policy in Active Directory using Group Policy
+- Unlocking and Password Rest Accounts
+- Enabling and Disabling Accounts
+-  Observing Logs
 
 <h2>Deployment and Configuration Steps</h2>
 
@@ -99,27 +103,44 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <p>- The output for the DNS settings should show DC-1’s private IP Address</p>
 <br />
 
+
+<h3>Install Active Directory on DC-1</h3>
+<br />
+
+<p><b>1. Login to DC-1 and install Active Directory Domain Services</b></p>
+<br />
+
 ![Screenshot 2025-02-18 162949](https://github.com/user-attachments/assets/2a787513-bbc0-4258-95c8-6b531a286657)
+<p>Open Server Manager.</p>
+
 ![Screenshot 2025-02-18 162957](https://github.com/user-attachments/assets/b2d7ce81-6c30-463e-8ea2-c79ed3489adb)
+<p>Click on Add roles and features.</p>
+
 ![Screenshot 2025-02-18 163103](https://github.com/user-attachments/assets/f012d2ba-d9bd-4a0f-a51a-f0e162ebfeda)
 ![Screenshot 2025-02-18 163120](https://github.com/user-attachments/assets/6c1b3dad-bfe8-4c30-974d-08722fc23fb1)
+<p>In the Role-based or feature-based installation window, select Active Directory Domain Services.</p>
+
 ![Screenshot 2025-02-18 163146](https://github.com/user-attachments/assets/5077cd9e-5547-4f78-a21a-07c284d3fbc9)
 
-<p>Login to DC-1 and install Active Directory Domain Services</p>
+<p>Follow the prompts to install it.</p>
+<br />
+
+<h3>2. Promote DC-1 as a Domain Controller (DC)</h3>
+<p><b>- Promote to Domain Controller:</b></p>
 <br />
 
 ![Screenshot 2025-02-18 163508](https://github.com/user-attachments/assets/ef031d32-088e-4080-b12f-b12c44c752dd)
-![Screenshot 2025-02-18 163655](https://github.com/user-attachments/assets/3da5ba08-b8d1-4f57-be5e-67281a5e6c66)
-![Screenshot 2025-02-18 163849](https://github.com/user-attachments/assets/c66d35f8-4c42-4eff-b784-6f31e94a2a45)
+<p>After installation, in Server Manager, click the notification flag and select Promote this server to a domain controller.</p>
 
-<p>Promote as a DC: Setup a new forest as mydomain.com</p>
-<br />
+![Screenshot 2025-02-18 163655](https://github.com/user-attachments/assets/3da5ba08-b8d1-4f57-be5e-67281a5e6c66)
+<p>Choose Add a new forest and enter mydomain.com as the root domain (remember this domain name for later steps).</p>
+
+![Screenshot 2025-02-18 163849](https://github.com/user-attachments/assets/c66d35f8-4c42-4eff-b784-6f31e94a2a45)
+<p>Complete the wizard</p>
 
 ![Screenshot 2025-02-18 164051](https://github.com/user-attachments/assets/16c015ec-c3f7-43bf-a977-282c0803835e)
-![Screenshot 2025-02-18 164335](https://github.com/user-attachments/assets/bdb65d54-7b2b-4e4c-b567-83d4f0db50b9)
-![Screenshot 2025-02-18 164454](https://github.com/user-attachments/assets/4e9735bd-7525-4700-b3ab-6ad48390c5a6)
 
-<p>Restart and then log back into DC-1 as user: mydomain.com\labuser</p>
+<p>Allow the server to restart and then log back into DC-1 as user: mydomain.com\labuser</p>
 <br />
 
 ![Screenshot 2025-02-18 164835](https://github.com/user-attachments/assets/e520ec0a-14bd-40eb-b704-f3e18430e180)
@@ -216,24 +237,136 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 ![Screenshot 2025-02-18 185706](https://github.com/user-attachments/assets/63a2fe9b-2540-452c-b02f-36238f34ed23)
 ![Screenshot 2025-02-18 185804](https://github.com/user-attachments/assets/b60b7f13-7932-4f4f-a7f8-e1fca11df189)
-![Screenshot 2025-02-18 185804](https://github.com/user-attachments/assets/309597c9-a2b8-4189-806d-d3dc0c931b14)
 ![Screenshot 2025-02-18 190022](https://github.com/user-attachments/assets/253c6455-a0c9-412d-b340-e693634121ed)
 
 <p>Client-1 is now able to log in as "menu.suq" or non-administrative user now</p>
 <br />
 
+<h2>Dealing with Account Lockouts</h2>
+<br />
 
+![Screenshot 2025-02-19 155921](https://github.com/user-attachments/assets/95faaf00-270b-40c3-987a-a27d8bac98e8)
 
-<p></p>
+<h3>1. Open the Group Policy Management Console (GPMC)</h3>
+<p>Log in to a machine with Group Policy Management Console installed (typically, a Domain Controller)</p>
+<p>Click Start, and type gpmc.msc in the search box, then press Enter. This opens the Group Policy Management Console.</p>
+<br />
+
+![Screenshot 2025-02-19 160341](https://github.com/user-attachments/assets/fb6086e5-f1b0-4576-bc41-1901ddf86736)
+
+<h3>2. Create or Edit a Group Policy Object (GPO)</h3>
+<p>In the GPMC, navigate to the Group Policy Objects section.</p>
+<p>Right-click Group Policy Objects and select New to create a new GPO, or right-click an existing GPO and select Edit to modify it.</p>
+<p>- Give the new GPO a descriptive name if you're creating a new one, like "Account Lockout Policy"</p>
+<br />
+
+![Screenshot 2025-02-19 160537](https://github.com/user-attachments/assets/36d13b28-79fb-4e2c-bc3a-e026efbacfe0)
+
+<h3>3. Navigate to the Account Lockout Policy Settings</h3>
+<p>In the Group Policy Management Editor, expand the following:</p>
+<p>- Computer Configuration > Policies > Windows Settings > Security Settings > Account Policies > Account Lockout Policy.</p>
 <br />
 
 
+![Screenshot 2025-02-19 161003](https://github.com/user-attachments/assets/0a3300e4-1b02-4755-b607-e29917816f38)
+![Screenshot 2025-02-19 161238](https://github.com/user-attachments/assets/fa47eb71-ad4b-47a5-bb14-68d4282351d2)
 
 
-<p></p>
+<h3>4. Configure Account Lockout Policy Settings</h3>
+<p><b>Account Lockout Duration:</b></p>
+<p>- Definition: The time in minutes that an account remains locked before it is automatically unlocked.</p>
+<p>- Configuration: Double-click on this setting, select Define this policy setting, and then set the duration (e.g., 30 minutes).</p>
+<p><b>Account Lockout Threshold:</b></p>
+<p>- Definition: The number of failed logon attempts that will trigger an account lockout.</p>
+<p>- Configuration: Double-click on this setting, select Define this policy setting, and then set the threshold (e.g., 3 invalid attempts).</p>
+<p><b>Reset Account Lockout Counter After:</b></p>
+<p>- Definition: The time in minutes after which the failed logon attempts counter is reset to 0, assuming there are no additional failed logon attempts.</p>
+<p>- Configuration: Double-click on this setting, select Define this policy setting, and then set the time (e.g., 15 minutes).</p>
+<br />
+
+![Screenshot 2025-02-19 162110](https://github.com/user-attachments/assets/10ee204d-e6b3-4f49-8a4e-617f222bafda)
+![Screenshot 2025-02-19 162429](https://github.com/user-attachments/assets/dd25b82c-d0e6-42f6-a789-ab06e1341679)
+
+<h3>5. Update Group Policy</h3>
+<p>You can wait for the Group Policy to propagate automatically, or you can force an update immediately.</p>
+<p>- On a client machine or server, open Command Prompt and type gpupdate /force, then press Enter.</p>
 <br />
 
 
+![Screenshot 2025-02-19 163448](https://github.com/user-attachments/assets/f40ce7a2-52ea-48f9-b292-f6a98d1b107f)
 
-<p></p>
+<h3>6. Verify the Policy</h3>
+<p>To verify the policy, you can use the rsop.msc (Resultant Set of Policy) tool on a client machine to see the applied settings.</p>
+<p>Alternatively, you can also check the settings using the Group Policy Management Console.</p>
 <br />
+
+
+<h3>Important Considerations</h3>
+<p><b>Account Lockout Threshold:</b> Setting this too low (e.g., 1 or 2 attempts) can lead to unnecessary lockouts.</p>
+<p><b>Account Lockout Duration:</b>Setting this too high can be inconvenient for users but increases security.</p>
+<p><b>Reset Account Lockout Counter After:</b>Setting this too short could allow attackers to repeatedly attempt to log in without triggering a lockout.</p>
+<br />
+<p>- By following these steps, you can successfully configure an account lockout policy in Active Directory using Group Policy.
+</p>
+<br />
+
+<h3>Unlocking and Password Reset Accounts</h3>
+<br />
+
+
+![Screenshot 2025-02-19 163756](https://github.com/user-attachments/assets/291aa6d2-58af-459d-8b4f-bc3da0cd05cd)
+
+<p>Attempt to log in with it 6 times with a bad password</p>
+<p>Observe that the account has been locked out within Active Directory</p>
+<br />
+
+
+![Screenshot 2025-02-19 164050](https://github.com/user-attachments/assets/3051a90c-d875-4f22-9874-9fe65a0e5f11)
+
+<p>Unlock the account</p>
+<br />
+
+![Screenshot 2025-02-19 164215](https://github.com/user-attachments/assets/ea5edfd5-b916-4ffd-8b06-506b99e4f31f)
+
+<p>Reset the password</p>
+<br />
+
+![Screenshot 2025-02-19 164400](https://github.com/user-attachments/assets/623350d1-9a38-4c16-8ef1-5b5086818ce1)
+![Screenshot 2025-02-19 164627](https://github.com/user-attachments/assets/3fb1a28f-a11e-43ca-8dd7-ffae6f68ef8e)
+
+<p>Attempt to login with it</p>
+<br />
+
+<h3> Enabling and Disabling Accounts</h3>
+<br />
+
+![Screenshot 2025-02-19 165202](https://github.com/user-attachments/assets/2e169116-ce99-45dc-9793-942abe04b587)
+
+<p>Disable the same account in Active Directory</p>
+<br />
+
+![Screenshot 2025-02-19 165330](https://github.com/user-attachments/assets/71d7a2d7-a185-41a2-81d4-4bd4df8a576b)
+
+<p>Attempt to login with it, observe the error message</p>
+<br />
+
+![Screenshot 2025-02-19 165351](https://github.com/user-attachments/assets/136dae3f-dc26-4cdb-8be7-82e1af54339a)
+
+<p>Re-enable the account and attempt to login with it.</p>
+<br />
+
+<h3>Observing Logs</h3>
+<br />
+
+![Screenshot 2025-02-19 165738](https://github.com/user-attachments/assets/d2c79441-a783-4e70-9498-7fbb64de1cce)
+
+<p>Observe the logs in the Domain Controller</p>
+<br />
+
+![Screenshot 2025-02-19 170324](https://github.com/user-attachments/assets/887f48ae-eda0-415e-8639-3cd1d8affe47)
+
+<p>In the Event Viewer, expand the following:</p>
+<p>Event Viewer > Windows Logs > Security > right click "find" > input the name of the user</p>
+<p>Observe the logs on the client Machine</p>
+<br />
+
