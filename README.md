@@ -97,31 +97,48 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <br />
 
 <h2>Set Up Client-1 in Azure</h2>
+<br />
+
+<h3>1. Create the Client VM (Windows 10):</h3>
+<br />
 
 ![Screenshot 2025-02-18 153516](https://github.com/user-attachments/assets/2e459b53-0d41-44c5-96bb-a32b6d8f991c)
 
-<p>Create the Client VM (Windows 10) named “Client-1”</p>
+<p>- In the Azure Portal, click Create a resource > Compute > Windows 10.</p>
+<p>- Set the Name as Client-1</p>
+<p>- Choose the Size and set Region to match the Virtual Network created earlier.</p>
+<p>- Under Networking, select the same Virtual Network (Active-Directory-VNet) as DC-1.</p>
+<p>- Click Review + Create and then Create.</p>
 <br />
 
-![Screenshot 2025-02-18 154720](https://github.com/user-attachments/assets/193f4b44-a6b2-4a0e-b8f1-be8c80814709)
-
-<p>Attach it to the same region and Virtual Network as DC-1</p>
+<h3>2. Set Client-1's DNS Settings to DC-1's Private IP:</h3>
 <br />
 
 ![Screenshot 2025-02-18 154736](https://github.com/user-attachments/assets/7b7996cb-fca5-4824-8c21-d162d54ba3d3)
 ![Screenshot 2025-02-18 154907](https://github.com/user-attachments/assets/3be28015-ca0c-4e48-ac89-a355ca2e678f)
 
-<p>After VM is created, set Client-1’s DNS settings to DC-1’s Private IP address</p>
+<p>- After VM creation, go to Networking > Network Interface then click on DNS servers and select Custom.</p>
+<p>- Set Client-1’s DNS settings to DC-1’s Private IP address then save the changes.</p>
+<br />
+
+<h3>3. Restart Client-1 from the Azure Portal:</h3>
 <br />
 
 ![Screenshot 2025-02-18 155023](https://github.com/user-attachments/assets/455750c0-154a-40e5-ad05-14469122a5c8)
 
-<p>From the Azure Portal, restart Client-1</p>
+<p>- Go to the Client-1 VM in the Azure Portal.</p>
+<p>- Click Restart to reboot the VM.</p>
+<br />
+
+<h2>Test Connectivity Between Client-1 and DC-1</h2>
+<br />
+
+<h3>1. Log into Client-1:</h3>
 <br />
 
 ![Screenshot 2025-02-18 155257](https://github.com/user-attachments/assets/8beb59bf-c964-4ee7-b4a7-3f660ec3e2dd)
 
-<p>Login to Client-1</p>
+<p>- Use Remote Desktop to log into Client-1</p>
 <br />
 
 ![Screenshot 2025-02-18 155358](https://github.com/user-attachments/assets/290432c5-b5ad-4514-93c9-f03cc317b4f2)
@@ -130,10 +147,13 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <p>- Ensure the ping succeeded</p>
 <br />
 
+<h3>2. Ping DC-1’s Private IP Address:</h3>
+<br />
+
 ![Screenshot 2025-02-18 155527](https://github.com/user-attachments/assets/a1399e04-7b5e-48f4-afa5-048e60f809fc)
 
-<p>From Client-1, open PowerShell and run ipconfig /all</p>
-<p>- The output for the DNS settings should show DC-1’s private IP Address</p>
+<p>- From Client-1, open PowerShell and run ipconfig /all</p>
+<p>- Ensure that the ping is successful and returns replies.</p>
 <br />
 
 
