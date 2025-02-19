@@ -21,10 +21,10 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <h2>High-Level Deployment and Configuration Steps</h2>
 
 - Setting up Domain Controller in Azure
-- Setting up Client-1 in Azure
+- Setting up "Client-1" in Azure
 - Installing Active Directory on DC-1
 - Create a Domain Admin user within the domain
-- Join Client-1 to your domain (mydomain.com)
+- Join "Client-1" to your domain (mydomain.com)
 - Setting up Remote Desktop for Non-Administrative users on Client-1
 - Create Multiple Users via PowerShell on DC-1
 - Configuring an Account lockout policy in Active Directory using Group Policy
@@ -35,7 +35,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <h2>Deployment and Configuration Steps:</h2>
 <br />
 
-<h2>Set Up Domain Controller (DC-1) in Azure</h2>
+<h2>Set Up Domain Controller "DC-1" in Azure</h2>
 <br />
 
 <h3>1. Create a Resource Group:</h3>
@@ -81,7 +81,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <p>- Click on the Private IP address and set it to Static then Save the changes.</p>
 <br />
 
-<h3>5. Log into DC-1 and Disable Windows Firewall:</h3>
+<h3>5. Log into "DC-1" and Disable Windows Firewall:</h3>
 <br />
 
 ![Screenshot 2025-02-18 154328](https://github.com/user-attachments/assets/9e373287-3f16-4408-a01a-cd094709ff54)
@@ -96,7 +96,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <p>- Select Turn off Windows Defender Firewall for both Private and Public networks (for testing purposes) then Click OK to save.</p>
 <br />
 
-<h2>Set Up Client-1 in Azure</h2>
+<h2>Set Up "Client-1" in Azure</h2>
 <br />
 
 <h3>1. Create the Client VM (Windows 10):</h3>
@@ -105,13 +105,13 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 ![Screenshot 2025-02-18 153516](https://github.com/user-attachments/assets/2e459b53-0d41-44c5-96bb-a32b6d8f991c)
 
 <p>- In the Azure Portal, click Create a resource > Compute > Windows 10.</p>
-<p>- Set the Name as Client-1</p>
+<p>- Set the Name as "Client-1".</p>
 <p>- Choose the Size and set Region to match the Virtual Network created earlier.</p>
-<p>- Under Networking, select the same Virtual Network (Active-Directory-VNet) as DC-1.</p>
+<p>- Under Networking, select the same Virtual Network (Active-Directory-VNet) as "DC-1".</p>
 <p>- Click Review + Create and then Create.</p>
 <br />
 
-<h3>2. Set Client-1's DNS Settings to DC-1's Private IP:</h3>
+<h3>2. Set Client-1's DNS Settings to "DC-1's" Private IP:</h3>
 <br />
 
 ![Screenshot 2025-02-18 154736](https://github.com/user-attachments/assets/7b7996cb-fca5-4824-8c21-d162d54ba3d3)
@@ -121,43 +121,43 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <p>- Set Client-1’s DNS settings to DC-1’s Private IP address then save the changes.</p>
 <br />
 
-<h3>3. Restart Client-1 from the Azure Portal:</h3>
+<h3>3. Restart "Client-1" from the Azure Portal:</h3>
 <br />
 
 ![Screenshot 2025-02-18 155023](https://github.com/user-attachments/assets/455750c0-154a-40e5-ad05-14469122a5c8)
 
-<p>- Go to the Client-1 VM in the Azure Portal.</p>
+<p>- Go to the "Client-1" VM in the Azure Portal.</p>
 <p>- Click Restart to reboot the VM.</p>
 <br />
 
-<h2>Test Connectivity Between Client-1 and DC-1</h2>
+<h2>Test Connectivity Between "Client-1" and "DC-1"</h2>
 <br />
 
-<h3>1. Log into Client-1:</h3>
+<h3>1. Log into "Client-1":</h3>
 <br />
 
 ![Screenshot 2025-02-18 155257](https://github.com/user-attachments/assets/8beb59bf-c964-4ee7-b4a7-3f660ec3e2dd)
 
-<p>- Use Remote Desktop to log into Client-1</p>
+<p>- Use Remote Desktop to log into "Client-1".</p>
 <br />
 
 ![Screenshot 2025-02-18 155358](https://github.com/user-attachments/assets/290432c5-b5ad-4514-93c9-f03cc317b4f2)
 
-<p>Attempt to ping DC-1’s private IP address</p>
+<p>Attempt to ping "DC-1’s" private IP address</p>
 <p>- Ensure the ping succeeded</p>
 <br />
 
-<h3>2. Ping DC-1’s Private IP Address:</h3>
+<h3>2. Ping "DC-1’s" Private IP Address:</h3>
 <br />
 
 ![Screenshot 2025-02-18 155527](https://github.com/user-attachments/assets/a1399e04-7b5e-48f4-afa5-048e60f809fc)
 
-<p>- From Client-1, open PowerShell and run ipconfig /all</p>
+<p>- From "Client-1", open PowerShell and run "ipconfig /all"</p>
 <p>- Ensure that the ping is successful and returns replies.</p>
 <br />
 
 
-<h2>Install Active Directory on DC-1</h2>
+<h2>Install Active Directory on "DC-1"</h2>
 <br />
 
 <h3>1. Login to DC-1 and install Active Directory Domain Services</h3>
@@ -165,7 +165,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 
 ![Screenshot 2025-02-18 162949](https://github.com/user-attachments/assets/2a787513-bbc0-4258-95c8-6b531a286657)
 
-<p>- Use DC-1 credentials to log into the Domain Controller Server.</p>
+<p>- Use "DC-1" credentials to log into the Domain Controller Server.</p>
 <p>- Open Server Manager.</p>
 <br />
 
@@ -187,7 +187,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <p>- Follow the prompts to install it.</p>
 <br />
 
-<h3>3. Promote DC-1 as a Domain Controller (DC):</h3>
+<h3>3. Promote "DC-1" as a Domain Controller (DC):</h3>
 <br />
 
 ![Screenshot 2025-02-18 163508](https://github.com/user-attachments/assets/ef031d32-088e-4080-b12f-b12c44c752dd)
@@ -205,7 +205,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 ![Screenshot 2025-02-18 164051](https://github.com/user-attachments/assets/16c015ec-c3f7-43bf-a977-282c0803835e)
 
 <p>- Allow the server to restart and then log back into DC-1 as user: mydomain.com\labuser</p>
-<p>- Then log back in to DC-1 using the credentials: mydomain.com\labuser.</p>
+<p>- Then log back in to "DC-1" using the credentials: "mydomain.com\labuser".</p>
 <br />
 
 <h2>Create Domain Admin User</h2>
@@ -215,7 +215,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <br />
 
 ![Screenshot 2025-02-18 164835](https://github.com/user-attachments/assets/e520ec0a-14bd-40eb-b704-f3e18430e180)
-<p>- Press Windows + R, type dsa.msc, and press Enter to open ADUC or click start and search "Active Directory Users and Computers"</p>
+<p>- Press Windows + R, type "dsa.msc", and press Enter to open ADUC or click start and search "Active Directory Users and Computers"</p>
 <br />
 
 <h3>2. Create an Organizational Unit (OU) for Employees:</h3>
@@ -246,21 +246,21 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 ![Screenshot 2025-02-18 165644](https://github.com/user-attachments/assets/07a587bf-9088-4772-888d-cbd233c6b5f3)
 <br />
 
-<h3>5. Add jane_admin to the “Domain Admins” Security Group</h3>
+<h3>5. Add "jane_admin" to the “Domain Admins” Security Group</h3>
 <br />
 
 ![Screenshot 2025-02-18 165749](https://github.com/user-attachments/assets/d4acfe81-18a5-4ddb-ac6c-218c80ad7adf)
 <p>- Right-click on Domain Admins in ADUC, and choose Properties then click on Add.</p>
-<p>- In the Enter the object names to select field, type jane_admin and click Check Names then click OK to add the user.</p>
+<p>- In the Enter the object names to select field, type "jane_admin" and click Check Names then click OK to add the user.</p>
 <br />
 
-<h3>6. Log out and close the connection to DC-1 and log back in as “mydomain.com\jane_admin”</h3>
+<h3>6. Log out and close the connection to "DC-1" and log back in as “mydomain.com\jane_admin”</h3>
 <br />
 
 ![Screenshot 2025-02-18 165926](https://github.com/user-attachments/assets/9efce4ba-24ed-46c2-9d7c-457da4e41b49)
 
-<p>- Log out of DC-1.</p>
-<p>- Login back into DC-1 using mydomain.com\jane_admin and the password</p>
+<p>- Log out of "DC-1".</p>
+<p>- Login back into "DC-1" using "mydomain.com\jane_admin" and the password</p>
 <br />
 
 <h2>Join "Client-1" to the Domain Server (mydomain.com)</h2>
@@ -272,16 +272,16 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 ![Screenshot 2025-02-18 170529](https://github.com/user-attachments/assets/6d863162-30e4-4c4e-832e-4943bb7c3095)
 ![Screenshot 2025-02-18 170644](https://github.com/user-attachments/assets/33fd511e-123f-4a5f-9868-3cc472c69074)
 
-<p>- Login to Client-1 as the original local admin (labuser).</p>
+<p>- Login to "Client-1" as the original local admin (labuser).</p>
 <p>- In the System window, click on "Rename this PC".</p>
 <p>- Then in the "Computer Name" click "Change"</p>
 <p>- In the Member of section, select Domain and enter "mydomain.com" as the domain name then Click "Ok"</p>
 <p>- In the domain credentials, enter "mydomain.com\jane_admin" and the corresponding password.</p>
 <p>- After the domain is successfully joined, click OK to restart the computer.</p>
-<p>- Then log back in and verify Client-1 in Active Directory</p>
+<p>- Then log back in and verify "Client-1" in Active Directory</p>
 <br />
 
-<h2>Create a New Organizational Unit (OU) and Move Client-1</h2>
+<h2>Create a New Organizational Unit (OU) and Move "Client-1"</h2>
 <br />
 
 <h3>1. Create the "_CLIENTS" OU:</h3>
@@ -289,8 +289,8 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 
 ![Screenshot 2025-02-18 171125](https://github.com/user-attachments/assets/639b8615-1a47-4443-8802-b31e6279c0e1)
 
-<p>- In ADUC, right-click on mydomain.com and select New > Organizational Unit.</p>
-<p>- Name the new OU _CLIENTS and click OK.</p>
+<p>- In ADUC, right-click on "mydomain.com" and select New > Organizational Unit.</p>
+<p>- Name the new OU "_CLIENTS" and click "OK".</p>
 
 <h3>2. Move Client-1 into the "_CLIENTS" OU:</h3>
 <br />
@@ -302,10 +302,10 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <p>- Click "OK".</p>
 <br />
 
-<h2>Set Up Remote Desktop for Non-Administrative Users on Client-1</h2>
+<h2>Set Up Remote Desktop for Non-Administrative Users on "Client-1"</h2>
 <br />
 
-<h3>1. Log into Client-1 as "mydomain.com\jane_admin"<h3>
+<h3>1. Log into "Client-1" as "mydomain.com\jane_admin"<h3>
 
 ![Screenshot 2025-02-18 180520](https://github.com/user-attachments/assets/a6734aea-0ffa-4b7b-af5e-9b37e34a413a)
 
@@ -327,7 +327,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <br />
 
 <h2>Create Multiple Users via PowerShell on DC-1</h2>
-<h3>1. Login to DC-1 as jane_admin</h3>
+<h3>1. Login to DC-1 as "jane_admin"</h3>
 <p>- Confirm that the user can successfully log in via Remote Desktop.</p>
 <br />
 
@@ -336,7 +336,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 
 ![Screenshot 2025-02-18 181940](https://github.com/user-attachments/assets/b04dbeaa-ad29-4ce7-a6c8-93489f0a838e)
 
-<p>- Open PowerShell ISE.</p>
+<p>- Open "PowerShell ISE".</p>
 <br />
 
 <h3>3. Create a new File</h3>
@@ -346,7 +346,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 ![Screenshot 2025-02-18 185259](https://github.com/user-attachments/assets/b2dfaff3-15e5-4851-bbd8-96a20a8a1c4e)
 
 <p>- Click File > New to create a new file.</p>
-<p>- Paste the contents of the <a href=https://github.com/mark-afortadera/AD_PS/blob/master/Generate-Names-Create-Users.ps1>script</a> into it</p></p>
+<p>- Paste the contents of the <a href=https://github.com/mark-afortadera/AD_PS/blob/master/Generate-Names-Create-Users.ps1>script</a> into the "WIndows Poweshell ISE".</p></p>
 <br />
 
 <h3>4. Run the Script:</h3>
@@ -363,16 +363,16 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 ![Screenshot 2025-02-18 185706](https://github.com/user-attachments/assets/63a2fe9b-2540-452c-b02f-36238f34ed23)
 
 <p>- Go to Active Directory Users and Computers (ADUC).</p>
-<p>- Navigate to the _EMPLOYEES Organizational Unit (OU).</p>
-<p>- Attempt to log into Client-1 with one of the accounts or as "menu.suq" user.)</p>
+<p>- Navigate to the "_EMPLOYEES" Organizational Unit (OU).</p>
+<p>- Attempt to log into "Client-1" with one of the accounts or as "menu.suq" user.)</p>
 <br />
 
-<h3>6. Attempt to Log Into Client-1 as the Created User:</h3>
+<h3>6. Attempt to Log Into "Client-1" as the Created User:</h3>
 <br />
 
 ![Screenshot 2025-02-18 185804](https://github.com/user-attachments/assets/b60b7f13-7932-4f4f-a7f8-e1fca11df189)
 
-<p>- Log out of Client-1 and try logging in as one of the newly created users.</p>
+<p>- Log out of "Client-1" and try logging in as one of the newly created users.</p>
 <p>- Use the password specified in the PowerShell script.</p>
 <br />
 
@@ -381,8 +381,8 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 
 ![Screenshot 2025-02-18 190022](https://github.com/user-attachments/assets/253c6455-a0c9-412d-b340-e693634121ed)
 
-<p>- Confirm that the new user can successfully log in to Client-1 through Remote Desktop.</p>
-<p>- Client-1 is now logged in as "menu.suq" user.</p>
+<p>- Confirm that the new user can successfully log in to "Client-1" through Remote Desktop.</p>
+<p>- "Client-1" is now logged in as "menu.suq" user.</p>
 <br />
 
 <h2>Dealing with Account Lockouts</h2>
@@ -394,7 +394,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 ![Screenshot 2025-02-19 155921](https://github.com/user-attachments/assets/95faaf00-270b-40c3-987a-a27d8bac98e8)
 
 <p>- Log in to a machine with Group Policy Management Console installed (typically, a Domain Controller)</p>
-<p>- Click Start, and type gpmc.msc in the search box, then press Enter. This opens the Group Policy Management Console.</p>
+<p>- Click Start, and type "gpmc.msc" in the search box, then press Enter. This opens the Group Policy Management Console.</p>
 <br />
 
 <h3>2. Create or Edit a Group Policy Object (GPO)</h3>
@@ -403,7 +403,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 ![Screenshot 2025-02-19 160341](https://github.com/user-attachments/assets/fb6086e5-f1b0-4576-bc41-1901ddf86736)
 
 <p>- In the GPMC, navigate to the Group Policy Objects section.</p>
-<p>- Right-click Group Policy Objects and select New to create a new GPO, or right-click an existing GPO and select Edit to modify it.</p>
+<p>- Right-click "Group Policy Objects" and select "New" to create a new GPO, or right-click an existing GPO and select "Edit" to modify it.</p>
 <p>- Give the new GPO a descriptive name if you're creating a new one, like "Account Lockout Policy"</p>
 <br />
 
@@ -424,7 +424,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 
 <p><b>Account Lockout Duration:</b></p>
 <p>- Definition: The time in minutes that an account remains locked before it is automatically unlocked.</p>
-<p>- Configuration: Double-click on this setting, select Define this policy setting, and then set the duration (e.g., 30 minutes).</p>
+<p>- Configuration: Double-click on this setting, select "Define this policy setting", and then set the duration (e.g., 30 minutes).</p>
 <p><b>Account Lockout Threshold:</b></p>
 <p>- Definition: The number of failed logon attempts that will trigger an account lockout.</p>
 <p>- Configuration: Double-click on this setting, select Define this policy setting, and then set the threshold (e.g., 3 invalid attempts).</p>
@@ -480,7 +480,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 ![Screenshot 2025-02-19 164050](https://github.com/user-attachments/assets/3051a90c-d875-4f22-9874-9fe65a0e5f11)
 
 <p>- In ADUC, right-click on the locked user account.</p>
-<p>- Select Properties.</p>
+<p>- Select "Properties".</p>
 <p>- Under the Account tab, uncheck Account is locked out and click OK.</p>
 <br />
 
@@ -491,7 +491,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 
 <p>- Still in ADUC, right-click on the user account and select Reset Password.</p>
 <p>- Set a new password (or reset it to the original password).</p>
-<p>- Click OK.</p>
+<p>- Click "OK".</p>
 <br />
 
 <h3>4. Attempt to Log In Again:</h3>
@@ -512,7 +512,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 
 ![Screenshot 2025-02-19 165202](https://github.com/user-attachments/assets/2e169116-ce99-45dc-9793-942abe04b587)
 
-<p>- Right-click on the user account in ADUC and select Disable the same account in Active Directory</p>
+<p>- Right-click on the "user account" in ADUC and select Disable the same account in Active Directory</p>
 <br />
 
 <h3>2. Attempt to Log in with the Disabled Account:</h3>
@@ -529,7 +529,7 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 
 ![Screenshot 2025-02-19 165351](https://github.com/user-attachments/assets/136dae3f-dc26-4cdb-8be7-82e1af54339a)
 
-<p>- Right-click on the user account in ADUC and select Enable Account.</p>
+<p>- Right-click on the "user account" in ADUC and select "Enable Account".</p>
 <p>- Attempt to logging in with the same user account.</p>
 <p>- Confirm that the login is successful and now the account has been re-enabled.</p>
 <br />
@@ -539,12 +539,12 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 
 ![Screenshot 2025-02-19 165738](https://github.com/user-attachments/assets/d2c79441-a783-4e70-9498-7fbb64de1cce)
 
-<p>- Open Event Viewer on DC-1 by pressing Windows + R, typing eventvwr.msc, and pressing Enter.</p>
+<p>- Open Event Viewer on "DC-1" by pressing "Windows + R", typing "eventvwr.msc", and pressing "Enter".</p>
 <br />
 
 ![Screenshot 2025-02-19 170324](https://github.com/user-attachments/assets/887f48ae-eda0-415e-8639-3cd1d8affe47)
 
-<p>- In the Event Viewer, go to Windows Logs > Security.</p>
+<p>- In the Event Viewer, go to "Windows Logs" > "Security".</p>
 <p>- Look for log entries related to Account Lockout and Failed Logins (Event ID 4625 for Audit Failure).</p>
 <br />
 
