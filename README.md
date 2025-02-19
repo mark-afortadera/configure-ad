@@ -187,6 +187,9 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 <p>User jane_admin as the admin account from now on</p>
 <br />
 
+<h3>4. Join "Client-1" to the Domain Server (mydomain.com)</h3>
+<br />
+
 ![Screenshot 2025-02-18 170529](https://github.com/user-attachments/assets/6d863162-30e4-4c4e-832e-4943bb7c3095)
 ![Screenshot 2025-02-18 170644](https://github.com/user-attachments/assets/33fd511e-123f-4a5f-9868-3cc472c69074)
 
@@ -201,6 +204,8 @@ This walkthrough outlines the implementation of on-premises Active Directory wit
 
 <p>Create a new OU named “_CLIENTS” and drag Client-1 into there (same steps as how "_EMPLOYEES" and "_ADMINS" group were created.</p>
 <br />
+
+<h2>Set Up Remote Desktop for Non-Administrative Users on Client-1</h2>
 
 ![Screenshot 2025-02-18 180520](https://github.com/user-attachments/assets/a6734aea-0ffa-4b7b-af5e-9b37e34a413a)
 ![Screenshot 2025-02-18 180659](https://github.com/user-attachments/assets/9253762b-a2d7-4d51-96c8-1a54050a37b8)
